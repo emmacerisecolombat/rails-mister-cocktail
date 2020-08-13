@@ -19,4 +19,11 @@ puts "🍹🍸Creating 100 fake ingredients..."
   #   Cocktail.create!(record)
   # end
 puts "Cocktails are seeded, CHEEEERSS! #{Ingredient.count} ingredients created"
-
+puts "🍹🍸Creating 100 fake cocktails for hipsters..."
+100.times do
+  cocktail = Cocktail.new(
+    name:    Faker::Name.name
+  )
+  cocktail.save!
+end
+puts "Finished! We created #{Cocktail.count} cocktails"

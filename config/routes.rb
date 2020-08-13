@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  get 'doses/new'
-  get 'doses/create'
-  get 'doses/destroy'
-  get 'cocktails/index'
-  get 'cocktails/show'
-  get 'cocktails/new'
-  get 'cocktails/create'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 # # 1. COCKTAILS ROUTER
@@ -16,7 +9,8 @@ Rails.application.routes.draw do
 #   # A user can create a new cocktail
 #     GET "/cocktails/new", to: "cocktails#new"
 #     POST "/cocktails", to: "cocktails#create"
-  resources :cocktails, only: [:index, :show, :new, :create] do
+                        # root to: "cocktails#index"
+                        # resources :cocktails, only: [:index, :show, :new, :create] do
 # # 2. DOSES ROUTER
 #   # A user can add a new dose (ingredient/description pair) to
 #     an existing cocktail
@@ -28,6 +22,13 @@ Rails.application.routes.draw do
 # ---------------------------------------------------------------
 # BE CAREFUL !! WE DO NOT NEED A CONTROLLER FOR INGREDIENTS !!
 # ---------------------------------------------------------------
-    resources :doses, only: [:new, :create, :destroy]
+                        #   resources :doses, only: [:create]
+                        # end
+                        # resources :doses, only: [:destroy]
+  root to: "cocktails#index"
+  resources :cocktails, only: [:index, :show, :new, :create] do
+    resources :doses, only: [:create]
+    resources :reviews, only: [:create]
   end
+  resources :doses, only: [:destroy]
 end

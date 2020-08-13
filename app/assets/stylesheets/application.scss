@@ -11,3 +11,13 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body{
+  background-image: url("https://i.pinimg.com/564x/7e/3a/39/7e3a39711462d9481c884fb188db193e.jpg");
+}
+.row{
+  width: 800px;
+  margin-left: 150px;
+  display: flex;
+  justify-content: center;
+}
