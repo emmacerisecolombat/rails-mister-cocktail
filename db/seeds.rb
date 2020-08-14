@@ -5,10 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-puts "🍹🍸Creating 100 fake ingredients..."
+puts "Regenerating Your DataBase ..."
+Review.destroy_all
+puts "✅ All Reviews were successfully destroyed: #{Review.count} Reviews"
+Dose.destroy_all
+puts "✅ All Doses were successfully destroyed: #{Dose.count} Doses"
+Ingredient.destroy_all
+puts "✅ All Ingredients were successfully destroyed: #{Ingredient.count} Ingeredient"
+Cocktail.destroy_all
+puts "✅ All Cocktails were successfully destroyed: #{Cocktail.count} Cocktails"
+
+puts "🍹🍸Creating 10 fake ingredients..."
   uri = open("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list").read
   ingredient_array_of_hash = JSON.parse(uri)["drinks"]
-  ingredient_array_of_hash.each do |ingredient_hash|
+  ingredients = ingredient_array_of_hash.first(10)
+  ingredients.each do |ingredient_hash|
     puts ingredient_name = ingredient_hash.values
     Ingredient.create(name:ingredient_name)
   end
@@ -20,7 +31,7 @@ puts "🍹🍸Creating 100 fake ingredients..."
   # end
 puts "Cocktails are seeded, CHEEEERSS! #{Ingredient.count} ingredients created"
 puts "🍹🍸Creating 100 fake cocktails for hipsters..."
-100.times do
+10.times do
   cocktail = Cocktail.new(
     name:    Faker::Name.name
   )
