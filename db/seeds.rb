@@ -23,6 +23,7 @@ puts "🍹🍸Creating 10 fake ingredients..."
     puts ingredient_name = ingredient_hash.values
     Ingredient.create(name:ingredient_name)
   end
+  puts "Finished! We created #{Ingredient.count} Ingredients"
 
   # path = File.join(File.dirname("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"), "./seeds/cocktails.json")
   # records = JSON.parse(File.read(path))
